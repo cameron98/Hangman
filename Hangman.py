@@ -1,4 +1,9 @@
 """
+Hangman v2.1
+
+Updates include instantaneous drawing of hangman head.
+Issues include basic appearance and no way to tell which letters have been guessed.
+
 Create a GUI hangman game for STEM day/school
 Begin with window to type in word, hidden with *.
 Must display list of letters, hangman screen and _ for letters.
@@ -78,13 +83,11 @@ def draw(step):
         t.pendown()
         t.forward(40)
     elif step ==6:
-        angle = 0
-        t.seth(0)
-        while angle < 360:
-            t.right(1)
-            t.forward(0.3)
-            angle +=1
+        t.speed(0)
+        t.seth(180)
+        t.circle(17)
     elif step == 7:
+        t.speed(5)
         t.penup()
         t.goto(150,125)
         t.pendown()
@@ -272,6 +275,7 @@ t = turtle.RawTurtle(canvas)
 screen = t.getscreen()
 screen.bgcolor=("white")
 
+
 wordDisplay = tk.Label(window, text="WORD", font=("Arial",30), bg=colour)
 wordDisplay.place(relx=0.1, rely=0.2)
 
@@ -281,5 +285,6 @@ RESTART.place(relx=0.7, rely=0.95)
 Word()
 
 window.mainloop()
+
 
 
